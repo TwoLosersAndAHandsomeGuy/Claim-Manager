@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>申领平台-管理端</title>
+
+    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/bootstrap-treeview/bootstrap-treeview.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../resources/css/base.css">
+
+    <script type="text/javascript" src="../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/bootstrap-treeview/bootstrap-treeview.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+    <style type="text/css">
+        body {
+            font-size: 14px;
+        }
+
+        label, strong {
+            font-weight: normal;
+        }
+        .btn-default .glyphicon {
+            color: #00A2D2;
+            font-size: 10px;
+        }
+        .treeMenu .glyphicon {
+            color: #868686;
+            font-size: 5px;
+        }
+        .treeMenu {
+            min-height: 800px;
+            background: whitesmoke;
+            padding: 0;
+            margin-right: 10px;
+            color: #868686;
+        }
+
+        .form-horizontal {
+            overflow: hidden;
+            margin-left: 10px;
+            background: whitesmoke;
+            padding: 10px 0 0;
+            border: 1px solid #ddd;
+            font-weight: normal;
+        }
+
+        .breadcrumb {
+            background-color: white;
+            padding: 15px 0 0 5px;
+            overflow: hidden;
+        }
+        .table-toolbar {
+            border-top: 1px solid #ddd;
+            padding: 10px 0 10px 5px;
+            background: #fcfcfe;
+            overflow: hidden;
+        }
+        .table-toolbar a{
+            padding: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            terrInit(getTreeData());
+            tableInit();
+        });
+
+        function getTreeData() {
+            var treeData = [
+                {
+                    text: "仓库管理",
+                    nodes: [
+                        {
+                            text: "库存管理"
+                        },
+                        {
+                            text: "物料维护"
+                        },
+                        {
+                            text: "申领单位维护"
+                        },
+                        {
+                            text: "申领限额维护"
+                        }
+                    ]
+                },
+                {
+                    text: "订单管理",
+                    nodes: [
+                        {
+                            text: "待处理订单"
+                        },
+                        {
+                            text: "订单追踪"
+                        }
+                    ]
+                },
+                {
+                    text: "服务管理",
+                    nodes: [
+                        {
+                            text: "待处理服务"
+                        },
+                        {
+                            text: "服务单"
+                        }
+                    ]
+                },
+                {
+                    text: "基础信息维护",
+                    nodes: [
+                        {
+                            text: "角色管理"
+                        },
+                        {
+                            text: "权限管理"
+                        },
+                        {
+                            text: "供应商维护"
+                        },
+                        {
+                            text: "物料同步"
+                        },
+                        {
+                            text: "收货地址维护"
+                        },
+                        {
+                            text: "物料分类"
+                        }
+                    ]
+                }
+            ];
+
+            return treeData;
+        }
+
+        function terrInit(data) {
+            $("#treeMenu").treeview({
+                data: data,
+                backColor: "whitesmoke",
+                width: 300,
+                showBorder: false,
+                levels: 3,
+                tags: ['available'],
+                onNodeSelected: function (event, data) {
+                    if (data.id == undefined || data.id == null) {
+                        return;
+                    }
+                    $("input[name='parentId']").val(data.id);
+                    $("input[name='parentNodeId']").val(data.nodeId);
+                }
+            });
+        }
+
+        function tableInit(){
+            $('#mainTable').bootstrapTable({
+                url: "",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                pagination: true,                   //是否显示分页（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                striped: true,                      //是否显示行间隔色
+                clickToSelect: true,                //是否启用点击选中行
+                height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                queryParams: function(param){
+                    return param;
+                },
+                singleSelect: true,
+                onLoadSuccess: function (data) {
+                    var a = data;
+                },
+                onLoadError : function(data){
+                    var b = data;
+                },
+                columns: [{
+                    radio: true
+                }, {
+                    field: 'AutoID',
+                    title: '投诉ID',
+                    visible: false
+                }, {
+                    field: 'roleCode',
+                    title: '角色编号'
+                }, {
+                    field: 'roleName',
+                    title: '角色名称'
+                }, {
+                    field: 'remark',
+                    title: '描述'
+                }, {
+                    field: 'isAvailable',
+                    title: '是否可用'
+                }, {
+                    field: 'PatientAge',
+                    title: '操作'
+                }
+                ]
+            });
+        }
+
+
+    </script>
+</head>
+<body>
+<div class="row" style="float:none;margin:auto;max-width: 1100px;background:#3a6ea5;">
+    <div class="row" style="float:right;margin:5px 20px 10px auto;color:white;">
+        <strong>Hi, 王老实 「仓库管理员」 | 修改密码</strong>
+    </div>
+    <div class="col-xs-3" style="padding: 20px;width: 22%;">
+        <img src="../resources/image/logo_u2.png" style="width: 350px;">
+    </div>
+</div>
+<div class="page-content">
+    <div id="treeMenu" class="col-xs-2 treeMenu"></div>
+    <div id="nav">
+
+        <ol class="breadcrumb">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">2013</a></li>
+            <li class="active">十一月</li>
+        </ol>
+        <div id="content">
+            <form class="form-horizontal" role="form">
+                <div class="form-group col-xs-4">
+                    <label class="col-xs-5 control-label">角色名称</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label class="col-xs-5 control-label">角色编码</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" id="code" name="code" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-4">
+                    <button type="submit" id="btnSearch" class="btn btn-primary">查询</button>
+                </div>
+            </form>
+            <div class="table-toolbar">
+                <div class="btn-toolbar">
+                    <a href="#" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus"></span> 新增
+                    </a>
+                    <a href="#" class="navbar-link">
+                        <span class="glyphicon glyphicon-save"></span> 导出数据
+                    </a>
+                </div>
+            </div>
+            <div id="contentTable" style="overflow: hidden;">
+                <table id = "mainTable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="float:none;margin:auto;max-width: 1100px;height: 86px;background:#3a6ea5;">
+</div>
+</body>
+</html>
