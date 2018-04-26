@@ -1,0 +1,60 @@
+{
+  "total": 11,
+  "rows": [
+    {
+      "AutoID": "func_1",
+      "funcCode": "query",
+      "funcName": "查询"
+    },
+    {
+      "AutoID": "func_2",
+      "funcCode": "add",
+      "funcName": "新增"
+    },
+    {
+      "AutoID": "func_3",
+      "funcCode": "admin",
+      "funcName": "修改"
+    },
+    {
+      "AutoID": "func_4",
+      "funcCode": "admin",
+      "funcName": "删除"
+    },
+    {
+      "AutoID": "func_5",
+      "funcCode": "admin",
+      "funcName": "上架1"
+    },
+    {
+      "AutoID": "func_6",
+      "funcCode": "admin",
+      "funcName": "上架2"
+    },
+    {
+      "AutoID": "func_7",
+      "funcCode": "admin",
+      "funcName": "上架3"
+    },
+    {
+      "AutoID": "func_8",
+      "funcCode": "admin",
+      "funcName": "上架4"
+    },
+    {
+      "AutoID": "func_9",
+      "funcCode": "admin",
+      "funcName": "上架5"
+    },
+    {
+      "AutoID": "func_10",
+      "funcCode": "admin",
+      "funcName": "上架6"
+    },
+    {
+      "AutoID": "func_11",
+      "funcCode": "admin",
+      "funcName": "上架7"
+    }
+  ]
+}

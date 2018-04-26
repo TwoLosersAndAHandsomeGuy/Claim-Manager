@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
     <link rel="stylesheet" type="text/css" href="../resources/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/role.css">
 
     <script type="text/javascript" src="../resources/js/jquery.1.11.3.js"></script>
     <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
@@ -15,15 +16,42 @@
     <script type="text/javascript" src="../resources/js/common.js"></script>
 
     <style type="text/css">
+        #roleAdd .modal-dialog {
+            width: 500px;
+        }
+
+        #roleAdd .modal-content {
+            width: 500px;
+        }
+
+        #divGrantMainSearch {
+            overflow: hidden;
+        }
+
+        #divGrantMainSearch .form-group {
+            padding: 0;
+        }
+
+        #divGrantMainSearch .control-label {
+            padding: 0 0 0 10px;
+        }
+
+        #divGrantMainSearch .col-xs-9 {
+            padding: 0;
+        }
+
+        #divGrantMainSearch button {
+            margin-left: 20px;
+        }
     </style>
     <script type="text/javascript">
         $(function () {
-            tableInit();
+            tableRoleMainInit();
         });
 
 
-        function tableInit() {
-            $('#mainTable').bootstrapTable({
+        function tableRoleMainInit() {
+            $('#roleMainTable').bootstrapTable({
                 url: "../testData/roleData.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
@@ -34,12 +62,6 @@
                 singleSelect: false,
                 queryParams: function (param) {
                     return param;
-                },
-                onLoadSuccess: function (data) {
-                    var a = data;
-                },
-                onLoadError: function (data) {
-                    var b = data;
                 },
                 columns: [{
                     checkbox: true
@@ -66,6 +88,186 @@
                 ]
             });
         }
+
+        function tableGrantMainInit() {
+            $('#grantMainTable').bootstrapTable({
+                url: "../testData/grantData.json",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                pagination: true,                   //是否显示分页（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                striped: true,                      //是否显示行间隔色
+                clickToSelect: true,                //是否启用点击选中行
+                height: 350,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                singleSelect: false,
+                queryParams: function (param) {
+                    return param;
+                },
+                onLoadSuccess: function (data) {
+                    var a = data;
+                },
+                onLoadError: function (data) {
+                    var b = data;
+                },
+                columns: [{
+                    checkbox: true
+                }, {
+                    field: 'AutoID',
+                    title: '投诉ID',
+                    visible: false
+                }, {
+                    field: 'pageName',
+                    title: '页面'
+                }, {
+                    field: 'funcName',
+                    title: '功能'
+                }, {
+                    field: 'deptName',
+                    title: '科室'
+                }, {
+                    field: 'roleName',
+                    title: '角色'
+                }, {
+                    field: 'PatientAge',
+                    title: '操作'
+                }
+                ]
+            });
+
+
+        }
+
+        function tableGrantAddPageInit() {
+            $('#grantAddPageTable').bootstrapTable({
+                url: "../testData/pageData.json",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                pagination: true,                   //是否显示分页（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                striped: true,                      //是否显示行间隔色
+                clickToSelect: true,                //是否启用点击选中行
+                height: 420,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                singleSelect: false,
+                queryParams: function (param) {
+                    return param;
+                },
+                onClickRow : function(row, tr, field){
+
+                },
+                columns: [{
+                    checkbox: true
+                }, {
+                    field: 'AutoID',
+                    visible: false
+                }, {
+                    field: 'pageName',
+                    title: '页面'
+                }
+                ]
+            });
+        }
+        function tableGrantAddFuncInit() {
+            $('#grantAddFuncTable').bootstrapTable({
+                url: "../testData/funcData.json",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                pagination: true,                   //是否显示分页（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                striped: true,                      //是否显示行间隔色
+                clickToSelect: true,                //是否启用点击选中行
+                height: 420,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                singleSelect: false,
+                queryParams: function (param) {
+                    return param;
+                },
+                columns: [{
+                    checkbox: true
+                }, {
+                    field: 'AutoID',
+                    visible: false
+                }, {
+                    field: 'funcName',
+                    title: '功能'
+                }
+                ]
+            });
+        }
+        function tableGrantAddDeptInit() {
+            $('#grantAddDeptTable').bootstrapTable({
+                url: "../testData/deptData.json",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                pagination: true,                   //是否显示分页（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                striped: true,                      //是否显示行间隔色
+                clickToSelect: true,                //是否启用点击选中行
+                height: 420,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                singleSelect: false,
+                queryParams: function (param) {
+                    return param;
+                },
+                columns: [{
+                    checkbox: true
+                }, {
+                    field: 'AutoID',
+                    visible: false
+                }, {
+                    field: 'deptName',
+                    title: '部门'
+                }
+                ]
+            });
+        }
+        function tableGrantAddRoleInit() {
+            $('#grantAddRoleTable').bootstrapTable({
+                url: "../testData/roleData.json",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                pagination: true,                   //是否显示分页（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                striped: true,                      //是否显示行间隔色
+                clickToSelect: true,                //是否启用点击选中行
+                height: 420,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                singleSelect: false,
+                queryParams: function (param) {
+                    return param;
+                },
+                columns: [{
+                    checkbox: true
+                }, {
+                    field: 'AutoID',
+                    visible: false
+                }, {
+                    field: 'roleName',
+                    title: '角色'
+                }
+                ]
+            });
+        }
+        function openAdd() {
+            $("#roleAddModal").modal("show");
+        }
+        function openGrant() {
+            $("#grantMainModal").modal("show");
+            tableGrantMainInit();
+            $("#grantMainModal").on('shown.bs.modal', function () {
+                $("#grantMainTable").bootstrapTable("resetView");
+            })
+        }
+        function grantMainClose() {
+            $("#grantMainModal").modal("hide");
+        }
+        function openGrantAdd() {
+            $("#grantAddModal").modal("show");
+            tableGrantAddPageInit();
+            tableGrantAddFuncInit();
+            tableGrantAddDeptInit();
+            tableGrantAddRoleInit();
+            $("#grantAddModal").on('shown.bs.modal', function () {
+                $('#grantAddPageTable').bootstrapTable("resetView");
+                $('#grantAddFuncTable').bootstrapTable("resetView");
+                $('#grantAddDeptTable').bootstrapTable("resetView");
+                $('#grantAddRoleTable').bootstrapTable("resetView");
+            })
+        }
+        function grantAddClose() {
+            $("#grantAddModal").modal("hide");
+        }
     </script>
 </head>
 <body>
@@ -80,7 +282,8 @@
 <div class="page-content">
     <div id="treeMenu" class="col-xs-2 treeMenu">
         <div class="list-group">
-            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#warehouseMenu" onclick="changeImg(this)">
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#warehouseMenu"
+               onclick="changeImg(this)">
                 <span class="glyphicon glyphicon-minus"></span>
                 仓库管理
             </a>
@@ -98,7 +301,8 @@
                     申领限额维护
                 </a>
             </div>
-            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#orderMenu" onclick="changeImg(this)">
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#orderMenu"
+               onclick="changeImg(this)">
                 <span class="glyphicon glyphicon-minus"></span>订单管理
             </a>
             <div id="orderMenu" class="collapse in">
@@ -109,7 +313,8 @@
                     订单追踪
                 </a>
             </div>
-            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#serviceMenu" onclick="changeImg(this)">
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#serviceMenu"
+               onclick="changeImg(this)">
                 <span class="glyphicon glyphicon-minus"></span>服务管理
             </a>
             <div id="serviceMenu" class="collapse in">
@@ -120,7 +325,8 @@
                     服务单
                 </a>
             </div>
-            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#baseInfoMenu" onclick="changeImg(this)">
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#baseInfoMenu"
+               onclick="changeImg(this)">
                 <span class="glyphicon glyphicon-minus"></span>基础信息维护
             </a>
             <div id="baseInfoMenu" class="collapse in">
@@ -151,7 +357,7 @@
 
         <ol class="breadcrumb">
             <li><a href="#">首页</a></li>
-            <li><a href="#">基础信息维护</a></li>
+            <li>基础信息维护</li>
             <li class="active">角色管理</li>
         </ol>
         <div id="content">
@@ -174,13 +380,13 @@
             </form>
             <div class="table-toolbar">
                 <div class="btn-toolbar">
-                    <a href="#" class="navbar-link">
+                    <a href="#" class="navbar-link" onclick="openAdd()">
                         <span class="glyphicon glyphicon-plus"></span> 新增
                     </a>
                     <a href="#" class="navbar-link">
                         <span class="glyphicon glyphicon-trash"></span> 删除
                     </a>
-                    <a href="#" class="navbar-link">
+                    <a href="#" class="navbar-link" onclick="openGrant()">
                         <span class="glyphicon glyphicon-check"></span> 授权
                     </a>
                     <a href="#" class="navbar-link">
@@ -192,12 +398,164 @@
                 </div>
             </div>
             <div id="contentTable" style="overflow: hidden;">
-                <table id="mainTable"></table>
+                <table id="roleMainTable"></table>
             </div>
         </div>
     </div>
 </div>
 <div class="row" style="float:none;margin:auto;max-width: 1100px;height: 86px;background:#3a6ea5;">
+</div>
+<div id="roleAdd">
+    <div class="modal fade" id="roleAddModal" tabindex="-1" role="dialog" aria-labelledby="roleAddModalLabel"
+         data-backdrop="static" style="top: 100px;">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="roleAddModalLabel">添加</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-4 control-label modal-label">角色编码</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-4 control-label modal-label">角色名称</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-4 control-label modal-label">描述</label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="roleAddsubmit" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                    </button>
+                    <button type="button" class="btn btn-default" id="roleAddClose" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="grantMain">
+    <div class="modal fade" id="grantMainModal" tabindex="-1" role="dialog" aria-labelledby="grantMainModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="grantMainModalLabel">授权</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="divGrantMainSearch">
+                        <div class="form-group col-xs-5">
+                            <div class="form-group col-xs-6">
+                                <label class="col-xs-3 control-label modal-label">页面</label>
+                                <div class="col-xs-9">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label class="col-xs-3 control-label modal-label">功能</label>
+                                <div class="col-xs-9">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-5">
+                            <div class="form-group col-xs-6">
+                                <label class="col-xs-3 control-label modal-label">角色</label>
+                                <div class="col-xs-9">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label class="col-xs-3 control-label modal-label">科室</label>
+                                <div class="col-xs-9">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <button type="submit" id="btnGrantMainSearch" class="btn btn-primary">查询</button>
+                        </div>
+                    </div>
+                    <div id="divGrantMainToolBar">
+                        <div class="table-toolbar">
+                            <div class="btn-toolbar">
+                                <a href="#" class="navbar-link" onclick="openGrantAdd()">
+                                    <span class="glyphicon glyphicon-plus"></span> 新增
+                                </a>
+                                <a href="#" class="navbar-link">
+                                    <span class="glyphicon glyphicon-trash"></span>删除
+                                </a>
+                                <a href="#" class="navbar-link">
+                                    <span class="glyphicon glyphicon-ok-sign"></span>导入
+                                </a>
+                                <a href="#" class="navbar-link">
+                                    <span class="glyphicon glyphicon-ban-circle"></span>导出
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="grantMainTable"></table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="grantMainClose" onclick="grantMainClose()">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="grantAddModal" tabindex="-1" role="dialog" aria-labelledby="grantAddModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="grantAddModalLabel">授权</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-xs-3">
+                        <table id="grantAddPageTable"></table>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <table id="grantAddFuncTable"></table>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <table id="grantAddDeptTable"></table>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <table id="grantAddRoleTable"></table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="grantAddsubmit" onclick="">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                    </button>
+                    <button type="button" class="btn btn-default" id="grantAddClose" onclick="grantAddClose()">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

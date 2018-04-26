@@ -1,0 +1,30 @@
+{
+    "total": 5,
+    "rows": [
+        {
+            "AutoID":"page_1",
+            "pageCode": "claimManager",
+            "pageName": "申领管理平台"
+        },
+        {
+            "AutoID":"page_2",
+            "pageCode": "admin",
+            "pageName": "仓库管理"
+        },
+         {
+             "AutoID":"page_3",
+             "pageCode": "admin",
+             "pageName": "库存管理"
+         },
+          {
+              "AutoID":"page_4",
+              "pageCode": "admin",
+              "pageName": "物资维护"
+          },
+         {
+             "AutoID":"page_5",
+             "pageCode": "admin",
+             "pageName": "物料规格维护"
+         }
+    ]
+}

@@ -67,3 +67,29 @@ label, strong {
 .indent{
     text-indent: 50px;
 }
+.modal-header{
+    padding: 10px;
+}
+.modal-body{
+    overflow: hidden;
+}
+.modal-footer{
+    overflow: hidden;
+    padding: 10px;
+}
+
+.modal-label {
+    margin-top: 5px;
+}
+
+.modal-open .modal{
+    overflow-y: hidden;
+}
+
+.pagination-detail{
+    font-size: 10px;
+}
+
+.pagination-detail button{
+    padding: 0;
+}

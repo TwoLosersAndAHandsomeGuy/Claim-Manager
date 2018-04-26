@@ -1,0 +1,126 @@
+{
+    "total": 11,
+    "rows": [
+        {
+            "AutoID":"grant_1",
+            "pageId": "page_1",
+            "pageName": "库存管理1",
+            "funcId": "func_1",
+            "funcName": "查询",
+            "deptName": "dept_1",
+            "deptName": "信息科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        },
+        {
+            "AutoID":"grant_2",
+            "pageId": "page_1",
+            "pageName": "库存管理2",
+            "funcId": "func_2",
+            "funcName": "新增",
+            "deptName": "dept_1",
+            "deptName": "信息科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        },
+         {
+             "AutoID":"grant_3",
+             "pageId": "page_1",
+             "pageName": "库存管理3",
+             "funcId": "func_3",
+             "funcName": "修改",
+             "deptName": "dept_1",
+             "deptName": "信息科",
+             "roleId":"role_1",
+             "roleName":"系统管理员"
+         },
+          {
+              "AutoID":"grant_4",
+              "pageId": "page_1",
+              "pageName": "库存管理",
+              "funcId": "func_4",
+              "funcName": "删除",
+              "deptName": "dept_1",
+              "deptName": "信息科",
+              "roleId":"role_1",
+              "roleName":"系统管理员"
+          },
+         {
+             "AutoID":"grant_5",
+             "pageId": "page_1",
+             "pageName": "库存管理5",
+             "funcId": "func_1",
+             "funcName": "查询",
+             "deptName": "dept_2",
+             "deptName": "急诊科",
+             "roleId":"role_1",
+             "roleName":"系统管理员"
+         },
+        {
+            "AutoID":"grant_6",
+            "pageId": "page_1",
+            "pageName": "库存管理6",
+            "funcId": "func_1",
+            "funcName": "查询",
+            "deptName": "dept_2",
+            "deptName": "急诊科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        },
+        {
+            "AutoID":"grant_7",
+            "pageId": "page_1",
+            "pageName": "库存管理7",
+            "funcId": "func_1",
+            "funcName": "查询",
+            "deptName": "dept_2",
+            "deptName": "急诊科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        },
+        {
+            "AutoID":"grant_8",
+            "pageId": "page_1",
+            "pageName": "库存管理8",
+            "funcId": "func_1",
+            "funcName": "查询",
+            "deptName": "dept_2",
+            "deptName": "急诊科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        },
+        {
+            "AutoID":"grant_9",
+            "pageId": "page_1",
+            "pageName": "库存管理9",
+            "funcId": "func_1",
+            "funcName": "查询",
+            "deptName": "dept_2",
+            "deptName": "急诊科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        },
+        {
+            "AutoID":"grant_10",
+            "pageId": "page_1",
+            "pageName": "库存管理10",
+            "funcId": "func_1",
+            "funcName": "查询",
+            "deptName": "dept_2",
+            "deptName": "急诊科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        },
+        {
+            "AutoID":"grant_11",
+            "pageId": "page_1",
+            "pageName": "库存管理11",
+            "funcId": "func_1",
+            "funcName": "查询",
+            "deptName": "dept_2",
+            "deptName": "急诊科",
+            "roleId":"role_1",
+            "roleName":"系统管理员"
+        }
+    ]
+}
