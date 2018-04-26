@@ -12,101 +12,16 @@
     <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
     <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common.js"></script>
 
     <style type="text/css">
     </style>
     <script type="text/javascript">
         $(function () {
-            terrInit(getTreeData());
             tableInit();
         });
 
-        function getTreeData() {
-            var treeData = [
-                {
-                    text: "仓库管理",
-                    nodes: [
-                        {
-                            text: "库存管理"
-                        },
-                        {
-                            text: "物料维护"
-                        },
-                        {
-                            text: "申领单位维护"
-                        },
-                        {
-                            text: "申领限额维护"
-                        }
-                    ]
-                },
-                {
-                    text: "订单管理",
-                    nodes: [
-                        {
-                            text: "待处理订单"
-                        },
-                        {
-                            text: "订单追踪"
-                        }
-                    ]
-                },
-                {
-                    text: "服务管理",
-                    nodes: [
-                        {
-                            text: "待处理服务"
-                        },
-                        {
-                            text: "服务单"
-                        }
-                    ]
-                },
-                {
-                    text: "基础信息维护",
-                    nodes: [
-                        {
-                            text: "角色管理"
-                        },
-                        {
-                            text: "权限管理"
-                        },
-                        {
-                            text: "供应商维护"
-                        },
-                        {
-                            text: "物料同步"
-                        },
-                        {
-                            text: "收货地址维护"
-                        },
-                        {
-                            text: "物料分类"
-                        }
-                    ]
-                }
-            ];
 
-            return treeData;
-        }
-
-        function terrInit(data) {
-            $("#treeMenu").treeview({
-                data: data,
-                backColor: "whitesmoke",
-                width: 300,
-                showBorder: false,
-                levels: 3,
-                tags: ['available'],
-                onNodeSelected: function (event, data) {
-                    if (data.id == undefined || data.id == null) {
-                        return;
-                    }
-                    $("input[name='parentId']").val(data.id);
-                    $("input[name='parentNodeId']").val(data.nodeId);
-                }
-            });
-        }
 
         function tableInit(){
             $('#mainTable').bootstrapTable({
@@ -166,7 +81,73 @@
     </div>
 </div>
 <div class="page-content">
-    <div id="treeMenu" class="col-xs-2 treeMenu"></div>
+    <div id="treeMenu" class="col-xs-2 treeMenu">
+        <div class="list-group">
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#warehouseMenu" onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>
+                仓库管理
+            </a>
+            <div id="warehouseMenu" class="collapse in">
+                <a class="list-group-item indent" href="#">
+                    库存管理
+                </a>
+                <a class="list-group-item indent" href="#">
+                    物料维护
+                </a>
+                <a class="list-group-item indent" href="#">
+                    申领单位维护
+                </a>
+                <a class="list-group-item indent" href="#">
+                    申领限额维护
+                </a>
+            </div>
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#orderMenu" onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>订单管理
+            </a>
+            <div id="orderMenu" class="collapse in">
+                <a class="list-group-item indent" href="#">
+                    待处理订单
+                </a>
+                <a class="list-group-item indent" href="#">
+                    订单追踪
+                </a>
+            </div>
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#serviceMenu" onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>服务管理
+            </a>
+            <div id="serviceMenu" class="collapse in">
+                <a class="list-group-item indent" href="#">
+                    待处理服务
+                </a>
+                <a class="list-group-item indent" href="#">
+                    服务单
+                </a>
+            </div>
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#baseInfoMenu" onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>基础信息维护
+            </a>
+            <div id="baseInfoMenu" class="collapse in">
+                <a class="list-group-item indent active" href="#">
+                    角色管理
+                </a>
+                <a class="list-group-item indent" href="#">
+                    权限管理
+                </a>
+                <a class="list-group-item indent" href="#">
+                    供应商维护
+                </a>
+                <a class="list-group-item indent" href="#">
+                    物料同步
+                </a>
+                <a class="list-group-item indent" href="#">
+                    收货地址维护
+                </a>
+                <a class="list-group-item indent" href="#">
+                    物料分类
+                </a>
+            </div>
+        </div>
+    </div>
     <div id="nav">
 
         <ol class="breadcrumb">

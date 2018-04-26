@@ -1,0 +1,40 @@
+{
+    "total": 5,
+    "rows": [
+        {
+            "AutoID":"asd1",
+            "roleCode": "admin",
+            "roleName": "管理员",
+            "remark":"备注",
+            "isAvailable" : "true"
+        },
+        {
+            "AutoID":"asd2",
+            "roleCode": "role_admin",
+            "roleName": "系统用户",
+            "remark":"默认用户",
+            "isAvailable" : "true"
+        },
+         {
+             "AutoID":"asd3",
+             "roleCode": "role_user",
+             "roleName": "普通用户",
+             "remark":"基础使用",
+             "isAvailable" : "true"
+         },
+          {
+              "AutoID":"asd4",
+              "roleCode": "ROLE_Warehouse_Admin",
+              "roleName": "仓库管理员",
+              "remark":"仓库管理",
+              "isAvailable" : "true"
+          },
+         {
+             "AutoID":"asd5",
+             "roleCode": "ROLE_Warehouse_Shipping",
+             "roleName": "发货员",
+             "remark":"发货",
+             "isAvailable" : "true"
+         }
+    ]
+}

@@ -12,166 +12,29 @@
     <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
     <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../resources/js/common.js"></script>
 
     <style type="text/css">
     </style>
     <script type="text/javascript">
         $(function () {
-//            terrInit(getTreeData());
-//            $("#treeMenu").treeview('selectNode',["角色管理",{ silent: true }]);
             tableInit();
         });
 
-        function getTreeData() {
-            var treeData = [
-                {
-                    text: "<a>仓库管理</a>",
-                    state: {
-                        selected: false
-                    },
-                    nodes: [
-                        {
-                            text: "库存管理",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "物料维护",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "申领单位维护",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "申领限额维护",
-                            state: {
-                                selected: false
-                            }
-                        }
-                    ]
-                },
-                {
-                    text: "订单管理",
-                    state: {
-                        selected: false
-                    },
-                    nodes: [
-                        {
-                            text: "待处理订单",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "订单追踪",
-                            state: {
-                                selected: false
-                            }
-                        }
-                    ]
-                },
-                {
-                    text: "服务管理",
-                    state: {
-                        selected: false
-                    },
-                    nodes: [
-                        {
-                            text: "待处理服务",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "服务单",
-                            state: {
-                                selected: false
-                            }
-                        }
-                    ]
-                },
-                {
-                    text: "基础信息维护",
-                    state: {
-                        selected: false
-                    },
-                    nodes: [
-                        {
-                            text: "角色管理",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "权限管理",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "供应商维护",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "物料同步",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "收货地址维护",
-                            state: {
-                                selected: false
-                            }
-                        },
-                        {
-                            text: "物料分类",
-                            state: {
-                                selected: false
-                            }
-                        }
-                    ]
-                }
-            ];
-
-            return treeData;
-        }
-
-        function terrInit(data) {
-            $("#treeMenu").treeview({
-                data: data,
-                backColor: "whitesmoke",
-                showBorder: false,
-                levels: 3,
-                onNodeSelected: function (event, data) {
-                    if (data.id == undefined || data.id == null) {
-                        return;
-                    }
-                }
-            });
-        }
 
         function tableInit() {
             $('#mainTable').bootstrapTable({
-                url: "",         //请求后台的URL（*）
+                url: "../testData/roleData2.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 striped: true,                      //是否显示行间隔色
                 clickToSelect: true,                //是否启用点击选中行
                 height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                singleSelect: false,
                 queryParams: function (param) {
                     return param;
                 },
-                singleSelect: true,
                 onLoadSuccess: function (data) {
                     var a = data;
                 },
@@ -179,7 +42,7 @@
                     var b = data;
                 },
                 columns: [{
-                    radio: true
+                    checkbox: true
                 }, {
                     field: 'AutoID',
                     title: '投诉ID',
@@ -202,16 +65,6 @@
                 }
                 ]
             });
-        }
-        function changeImg(obj){
-            var sp = $(obj).find("span");
-            if(sp.hasClass("glyphicon-plus")){
-                sp.addClass("glyphicon-minus");
-                sp.removeClass("glyphicon-plus");
-            }else{
-                sp.addClass("glyphicon-plus");
-                sp.removeClass("glyphicon-minus");
-            }
         }
     </script>
 </head>
