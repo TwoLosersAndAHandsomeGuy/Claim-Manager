@@ -1,0 +1,55 @@
+{
+  "total": 12,
+  "rows": [
+    {
+      "id": 1,
+      "supplierCode": "01",
+      "supplierName": "仓库1",
+      "address" : "北京市昌平区",
+      "director " : "王老实",
+      "phone" : "13611111111",
+      "account" : "admin1",
+      "password" : "admin1"
+    },
+    {
+      "id": 2,
+      "supplierCode": "02",
+      "supplierName": "仓库2",
+      "address" : "北京市昌平区",
+      "director " : "王老实",
+      "phone" : "13611111111",
+      "account" : "admin1",
+      "password" : "admin1"
+    },
+    {
+      "id": 3,
+      "supplierCode": "03",
+      "supplierName": "仓库3",
+      "address" : "北京市昌平区",
+      "director " : "王老实",
+      "phone" : "13611111111",
+      "account" : "admin1",
+      "password" : "admin1"
+    },
+    {
+      "id": 4,
+      "supplierCode": "04",
+      "supplierName": "仓库4",
+      "address" : "北京市昌平区",
+      "director " : "王老实",
+      "phone" : "13611111111",
+      "account" : "admin1",
+      "password" : "admin1"
+    },
+    {
+      "id": 5,
+      "supplierCode": "05",
+      "supplierName": "仓库5",
+      "address" : "北京市昌平区",
+      "director " : "王老实",
+      "phone" : "13611111111",
+      "account" : "admin1",
+      "password" : "admin1"
+    }
+  ]
+}
