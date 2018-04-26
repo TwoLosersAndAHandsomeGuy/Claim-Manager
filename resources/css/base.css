@@ -82,6 +82,14 @@ label, strong {
     margin-top: 5px;
 }
 
+.little-modal .modal-dialog {
+    width: 500px;
+}
+
+.little-modal .modal-content {
+    width: 500px;
+}
+
 .modal-open .modal{
     overflow-y: hidden;
 }

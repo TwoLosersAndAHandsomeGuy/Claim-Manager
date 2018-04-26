@@ -1,0 +1,40 @@
+{
+  "total": 12,
+  "rows": [
+    {
+      "id": 1,
+      "materielTypeCode": "SPPL-HC",
+      "materielTypeName": "耗材",
+      "claimRemark" : "否",
+      "isAvailable" : "是"
+    },
+    {
+      "id": 2,
+      "materielTypeCode": "SPPL-DZ",
+      "materielTypeName": "低值耗材",
+      "claimRemark" : "否",
+      "isAvailable" : "是"
+    },
+    {
+      "id": 3,
+      "materielTypeCode": "SSPL-SB",
+      "materielTypeName": "设备",
+      "claimRemark" : "否",
+      "isAvailable" : "是"
+    },
+    {
+      "id": 4,
+      "materielTypeCode": "SSPL-WJ",
+      "materielTypeName": "五金建材",
+      "claimRemark" : "否",
+      "isAvailable" : "是"
+    },
+    {
+      "id": 5,
+      "materielTypeCode": "SSPL-YP",
+      "materielTypeName": "药品",
+      "claimRemark" : "否",
+      "isAvailable" : "是"
+    }
+  ]
+}
