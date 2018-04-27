@@ -1,0 +1,25 @@
+{
+  "total": 12,
+  "rows": [
+    {
+      "id": 1,
+      "roomCode": "01",
+      "roomName": "101室"
+    },
+    {
+      "id": 2,
+      "roomCode": "02",
+      "roomName": "102室"
+    },
+    {
+      "id": 3,
+      "roomCode": "03",
+      "roomName": "103室"
+    },
+    {
+      "id": 4,
+      "roomCode": "04",
+      "roomName": "104室"
+    }
+  ]
+}

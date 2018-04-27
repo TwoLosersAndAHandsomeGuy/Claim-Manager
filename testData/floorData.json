@@ -1,0 +1,25 @@
+{
+  "total": 12,
+  "rows": [
+    {
+      "id": 1,
+      "floorCode": "01",
+      "floorName": "北京大学国际医院  教学科研楼"
+    },
+    {
+      "id": 2,
+      "floorCode": "02",
+      "floorName": "北京大学国际医院  急诊楼"
+    },
+    {
+      "id": 3,
+      "floorCode": "03",
+      "floorName": "北京大学国际医院  住院楼"
+    },
+    {
+      "id": 4,
+      "floorCode": "04",
+      "floorName": "北京大学国际医院  综合楼"
+    }
+  ]
+}

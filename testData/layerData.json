@@ -1,0 +1,25 @@
+{
+  "total": 12,
+  "rows": [
+    {
+      "id": 1,
+      "layerCode": "01",
+      "layerName": "一层"
+    },
+    {
+      "id": 2,
+      "layerCode": "02",
+      "layerName": "二层"
+    },
+    {
+      "id": 3,
+      "layerCode": "03",
+      "layerName": "三层"
+    },
+    {
+      "id": 4,
+      "layerCode": "04",
+      "layerName": "四层"
+    }
+  ]
+}
