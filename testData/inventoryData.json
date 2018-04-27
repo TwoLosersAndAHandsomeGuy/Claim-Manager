@@ -1,0 +1,53 @@
+{
+  "total": 12,
+  "rows": [
+    {
+      "id": 1,
+      "materielTypeCode": "SPPL-DZ",
+      "materielTypeName": "低值耗材",
+      "materielCode": "BJ001",
+      "materielName": "笔记本",
+      "unit":"本",
+      "spec":"A5",
+      "brand":"樱花",
+      "num" : "5000",
+      "state" : "未上架"
+    },
+    {
+      "id": 2,
+      "materielTypeCode": "SPPL-DZ",
+      "materielTypeName": "低值耗材",
+      "materielCode": "B_office_02",
+      "materielName": "铅笔",
+      "spec":"B2",
+      "unit":"支",
+      "brand":"真彩",
+      "num" : "0",
+      "state" : "缺货"
+    },
+    {
+      "id": 3,
+      "materielTypeCode": "SPPL-DZ",
+      "materielTypeName": "低值耗材",
+      "materielCode": "B_office_03",
+      "materielName": "油性笔",
+      "spec":"蓝",
+      "unit":"支",
+      "brand":"晨光",
+      "num" : "2000",
+      "state" : "正常"
+    },
+    {
+      "id": 4,
+      "materielTypeCode": "SPPL-DZ",
+      "materielTypeName": "低值耗材",
+      "materielCode": "B_office_04",
+      "materielName": "油性笔",
+      "spec":"红",
+      "unit":"支",
+      "brand":"得力",
+      "num" : "200",
+      "state" : "正常"
+    }
+  ]
+}
