@@ -17,9 +17,9 @@ label, strong {
     font-weight: normal;
 }
 .btn-default .glyphicon {
-    color: #00A2D2;
-    font-size: 10px;
-}
+     color: #00A2D2;
+     /*font-size: 10px;*/
+ }
 
 .treeMenu {
     width: 200px;

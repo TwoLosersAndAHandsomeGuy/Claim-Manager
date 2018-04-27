@@ -11,7 +11,8 @@
     <script type="text/javascript" src="../../resources/js/jquery.1.11.3.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
-    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
     <script type="text/javascript" src="../../resources/js/common.js"></script>
 
     <style type="text/css">
@@ -19,12 +20,12 @@
     </style>
     <script type="text/javascript">
         $(function () {
-            tableInventoryMainInit();
+            tableMaterielMainInit();
         });
 
 
-        function tableInventoryMainInit() {
-            $('#inventoryMainTable').bootstrapTable({
+        function tableMaterielMainInit() {
+            $('#materielMainTable').bootstrapTable({
                 url: "../../testData/inventoryData.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
@@ -43,7 +44,8 @@
                     visible: false
                 }, {
                     field: 'materielCode',
-                    title: '物料编码'
+                    title: '物料编码',
+                    formatter: materielFormatter
                 }, {
                     field: 'materielTypeName',
                     title: '物料分类'
@@ -54,36 +56,31 @@
                     field: 'spec',
                     title: '物料规格'
                 }, {
-                    field: 'unit',
-                    title: '单位'
-                }, {
-                    field: 'brand',
-                    title: '品牌'
-                }, {
-                    field: 'num',
-                    title: '库存量'
+                    field: 'supplier',
+                    title: '供应商'
                 }, {
                     field: 'state',
                     title: '状态'
-                }, {
-                    title: '操作',
-                    formatter :invFormatter
                 }
                 ]
             });
         }
-        function invFormatter(element, row, index){
-            return "<a href='#' onclick='openInventoryWin(" + index + ")'>库存</a>";
+        function materielFormatter(value, row, index) {
+            return "<a href='#' onclick='openMaterielAddWin(" + index + ")'>" + value + "</a>";
         }
 
-        function openInventoryWin(index){
-            var data = $('#inventoryMainTable').bootstrapTable('getData');
-            var id = data[index].id;
+        function openMaterielAddWin(index) {
+            if (index != null) {
+                var data = $('#materielMainTable').bootstrapTable('getData');
+                var id = data[index].id;
+            }
 
-            $("#inventoryModal").modal("show");
+            $("#materielAddModal").modal("show");
         }
-        function closeInventoryWin(){
-            $("#inventoryModal").modal("hide");
+
+
+        function closeMaterielAddWin() {
+            $("#materielAddModal").modal("hide");
         }
     </script>
 </head>
@@ -105,10 +102,10 @@
                 仓库管理
             </a>
             <div id="warehouseMenu" class="collapse in">
-                <a class="list-group-item indent active" href="#">
+                <a class="list-group-item indent" href="#">
                     库存管理
                 </a>
-                <a class="list-group-item indent" href="#">
+                <a class="list-group-item indent active" href="#">
                     物料维护
                 </a>
                 <a class="list-group-item indent" href="#">
@@ -147,16 +144,16 @@
                 <span class="glyphicon glyphicon-minus"></span>基础信息维护
             </a>
             <div id="baseInfoMenu" class="collapse in">
-                <a class="list-group-item indent" href="roleManager.html">
+                <a class="list-group-item indent" href="../roleManager.html">
                     角色管理
                 </a>
-                <a class="list-group-item indent" href="jurisdictionManager.html">
+                <a class="list-group-item indent" href="../jurisdictionManager.html">
                     权限管理
                 </a>
-                <a class="list-group-item indent " href="supplierManager.html">
+                <a class="list-group-item indent " href="../supplierManager.html">
                     供应商维护
                 </a>
-                <a class="list-group-item indent" href="materielSync.html">
+                <a class="list-group-item indent" href="../materielSync.html">
                     物料同步
                 </a>
                 <a class="list-group-item indent" href="#">
@@ -174,13 +171,88 @@
         <ol class="breadcrumb">
             <li><a href="#">首页</a></li>
             <li>基础信息维护</li>
-            <li class="active">库存管理</li>
+            <li class="active">物料维护</li>
         </ol>
         <div id="content">
             <form class="form-horizontal" role="form">
-                    <div class="form-group col-xs-5">
-                        <label class="col-xs-4 control-label">物料分类</label>
-                        <div class="col-xs-7">
+                <div class="form-group col-xs-5">
+                    <label class="col-xs-4 control-label">物料分类</label>
+                    <div class="col-xs-7">
+                        <select class="form-control">
+                            <option value="0">---请选择---</option>
+                            <option value="1">被服</option>
+                            <option value="2">低值耗材</option>
+                            <option value="3">高值耗材</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-5">
+                    <label class="col-xs-4 control-label">物料编码</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-5">
+                    <label class="col-xs-4 control-label">物料名称</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-5">
+                    <label class="col-xs-4 control-label">物料规格</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-2">
+                    <button type="submit" id="btnSearch" class="btn btn-primary">查询</button>
+                </div>
+            </form>
+            <div class="table-toolbar">
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-default" onclick="openMaterielAddWin()">
+                        <span class="glyphicon glyphicon-plus"></span>新增
+                    </button>
+                    <button type="button" class="btn btn-default" onclick="">
+                        <span class="glyphicon glyphicon-trash"></span>删除
+                    </button>
+                </div>
+            </div>
+            <div id="contentTable" style="overflow: hidden;">
+                <table id="materielMainTable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="float:none;margin:auto;max-width: 1100px;height: 86px;background:#3a6ea5;">
+</div>
+<div id="materielAddDiv" class="">
+    <div class="modal fade" id="materielAddModal" tabindex="-1" role="dialog" aria-labelledby="materielAddModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="materielAddModalLabel">物料编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">物料编码<span style="color: red">*</span></label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">物料名称<span style="color: red">*</span></label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">物料分类</label>
+                        <div class="col-xs-8">
                             <select class="form-control">
                                 <option value="0">---请选择---</option>
                                 <option value="1">被服</option>
@@ -189,89 +261,54 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-xs-5">
-                        <label class="col-xs-4 control-label">物料编码</label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-5">
-                        <label class="col-xs-4 control-label">物料名称</label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-5">
-                        <label class="col-xs-4 control-label">物料规格</label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                <div class="form-group col-xs-2">
-                    <button type="submit" id="btnSearch" class="btn btn-primary">查询</button>
-                </div>
-            </form>
-            <div class="table-toolbar">
-                <div class="btn-toolbar">
-                    <button type="button" class="btn btn-default" onclick="">
-                        <span class="glyphicon glyphicon-arrow-down"></span>下架
-                    </button>
-                    <button type="button" class="btn btn-default" >
-                        <span class="glyphicon glyphicon-arrow-up"></span>上架
-                    </button>
-                </div>
-            </div>
-            <div id="contentTable" style="overflow: hidden;">
-                <table id="inventoryMainTable"></table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row" style="float:none;margin:auto;max-width: 1100px;height: 86px;background:#3a6ea5;">
-</div>
-<div id="inventoryAddDiv" class="little-modal">
-    <div class="modal fade" id="inventoryModal" tabindex="-1" role="dialog" aria-labelledby="inventoryModalLabel"
-         data-backdrop="static">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="inventoryModalLabel">库存</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-3 control-label modal-label">物料分类</label>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="无" readonly="true">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-3 control-label modal-label">物料编码<span style="color: red">*</span></label>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-3 control-label modal-label">物料名称<span style="color: red">*</span></label>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-6">
                         <label class="col-xs-3 control-label modal-label">品牌</label>
-                        <div class="col-xs-9">
+                        <div class="col-xs-8">
                             <input type="text" class="form-control" placeholder="请输入">
                         </div>
                     </div>
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-3 control-label modal-label">库存量<span style="color: red">*</span></label>
-                        <div class="col-xs-9">
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">物料规格</label>
+                        <div class="col-xs-8">
                             <input type="text" class="form-control" placeholder="请输入">
                         </div>
                     </div>
-                    <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">物料价格</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">供应商</label>
+                        <div class="col-xs-8">
+                            <select class="form-control">
+                                <option value="0">---请选择---</option>
+                                <option value="1">供应商1</option>
+                                <option value="2">供应商2</option>
+                                <option value="3">供应商3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">生产地址</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">申领规格<span style="color: red">*</span></label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">件数<span style="color: red">*</span></label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-7">
                         <label class="col-xs-3 control-label modal-label">
                             是否上架<span style="color: red">*</span>
                         </label>
@@ -284,12 +321,23 @@
                             </label>
                         </div>
                     </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-3 control-label modal-label">
+                            图片<span style="color: red">*</span>
+                        </label>
+                        <div class="col-xs-8"></div>
+
+                    </div>
                 </div>
                 <div class="modal-footer">
+                    <p class="text-muted" style="float: left;">
+                        <small>图片:宽500*高500像素,大小在120KB以内,JPG或者GIF格式</small>
+                    </p>
                     <button type="button" class="btn btn-primary" id="materielTypeAddSubmit" onclick="">
                         <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
                     </button>
-                    <button type="button" class="btn btn-default" id="materielTypeAddClose" onclick="closeInventoryWin()">
+                    <button type="button" class="btn btn-default" id="materielTypeAddClose"
+                            onclick="closeMaterielAddWin()">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
                     </button>
                 </div>
