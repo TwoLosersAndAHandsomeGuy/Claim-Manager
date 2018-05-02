@@ -1,0 +1,63 @@
+{
+  "total": 12,
+  "rows": [
+    {
+      "id": 1,
+      "materielTypeCode": "SPPL-HC",
+      "materielTypeName": "耗材",
+      "isLabel" : false
+    },
+    {
+      "id": 11,
+      "materielTypeCode": "SPPL-HC-1",
+      "materielTypeName": "标签1",
+      "claimRemark": "否",
+      "isAvailable": "是",
+      "isLabel" : true
+    },
+    {
+      "id": 11,
+      "materielTypeCode": "SPPL-HC-2",
+      "materielTypeName": "标签2",
+      "isLabel" : true
+    },
+    {
+      "id": 2,
+      "materielTypeCode": "SPPL-DZ",
+      "materielTypeName": "低值耗材",
+      "isLabel" : false
+    },
+    {
+      "id": 21,
+      "materielTypeCode": "SPPL-DZ-1",
+      "materielTypeName": "标签1",
+      "claimRemark": "否",
+      "isAvailable": "是",
+      "isLabel" : true
+    },
+    {
+      "id": 21,
+      "materielTypeCode": "SPPL-DZ-2",
+      "materielTypeName": "标签2",
+      "isLabel" : true
+    },
+    {
+      "id": 3,
+      "materielTypeCode": "SSPL-SB",
+      "materielTypeName": "设备",
+      "isLabel" : false
+    },
+    {
+      "id": 4,
+      "materielTypeCode": "SSPL-WJ",
+      "materielTypeName": "五金建材",
+      "isLabel" : false
+    },
+    {
+      "id": 5,
+      "materielTypeCode": "SSPL-YP",
+      "materielTypeName": "药品",
+      "isLabel" : false
+    }
+  ]
+}

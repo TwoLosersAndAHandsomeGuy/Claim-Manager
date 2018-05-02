@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <title>申领平台-管理端</title>
 
-    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../resources/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/base.css">
 
-    <script type="text/javascript" src="../resources/js/jquery.1.11.3.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
-    <script type="text/javascript" src="../resources/js/common.js"></script>
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/common.js"></script>
 
     <style type="text/css">
     </style>
     <script type="text/javascript">
         $(function () {
-            tableJurisMainInit();
+            tableSupplierMainInit();
         });
 
 
-        function tableJurisMainInit() {
-            $('#jurisMainTable').bootstrapTable({
-                url: "../testData/jurisData.json",         //请求后台的URL（*）
+        function tableSupplierMainInit() {
+            $('#supplierMainTable').bootstrapTable({
+                url: "../../testData/supplierData.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -42,98 +43,35 @@
                     title: '投诉ID',
                     visible: false
                 }, {
-                    field: 'deptName',
-                    title: '所属科室'
+                    field: 'supplierCode',
+                    title: '供应商编号'
                 }, {
-                    field: 'userCode',
-                    title: '用户编码'
+                    field: 'supplierName',
+                    title: '供应商名称'
                 }, {
-                    field: 'userName',
-                    title: '用户名称'
+                    field: 'address',
+                    title: '地点'
                 }, {
-                    field: 'roleCode',
-                    title: '角色编码'
+                    field: 'address',
+                    title: '负责人'
                 }, {
-                    field: 'roleName',
-                    title: '角色名称'
+                    field: 'phone',
+                    title: '电话'
                 }, {
-                    field: 'PatientAge',
-                    title: '操作'
+                    field: 'account',
+                    title: '账号'
+                }, {
+                    field: 'password',
+                    title: '密码'
                 }
                 ]
             });
         }
-
-        function tableJurisAddUserInit() {
-            $('#jurisAddUserTable').bootstrapTable({
-                url: "../testData/userData.json",         //请求后台的URL（*）
-                method: 'get',                      //请求方式（*）
-                pagination: true,                   //是否显示分页（*）
-                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-                striped: true,                      //是否显示行间隔色
-                clickToSelect: true,                //是否启用点击选中行
-                height: 350,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                singleSelect: false,
-                queryParams: function (param) {
-                    return param;
-                },
-                columns: [{
-                    checkbox: true
-                }, {
-                    field: 'AutoID',
-                    title: '投诉ID',
-                    visible: false
-                }, {
-                    field: 'userCode',
-                    title: '编码'
-                }, {
-                    field: 'userName',
-                    title: '用户'
-                }
-                ]
-            });
+        function openSupplierAdd() {
+            $("#supplierAddModal").modal("show");
         }
-
-        function tableJurisAddRoleInit() {
-            $('#jurisAddRoleTable').bootstrapTable({
-                url: "../testData/roleData.json",         //请求后台的URL（*）
-                method: 'get',                      //请求方式（*）
-                pagination: true,                   //是否显示分页（*）
-                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-                striped: true,                      //是否显示行间隔色
-                clickToSelect: true,                //是否启用点击选中行
-                height: 350,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                singleSelect: false,
-                queryParams: function (param) {
-                    return param;
-                },
-                columns: [{
-                    checkbox: true
-                }, {
-                    field: 'AutoID',
-                    title: '投诉ID',
-                    visible: false
-                }, {
-                    field: 'roleCode',
-                    title: '角色编码'
-                }, {
-                    field: 'roleName',
-                    title: '角色名称'
-                }
-                ]
-            });
-        }
-        function openJurisAdd() {
-            $("#jurisAddModal").modal("show");
-            tableJurisAddUserInit();
-            tableJurisAddRoleInit();
-            $("#jurisAddModal").on('shown.bs.modal', function () {
-                $('#jurisAddUserTable').bootstrapTable("resetView");
-                $('#jurisAddRoleTable').bootstrapTable("resetView");
-            })
-        }
-        function jurisAddClose(){
-            $("#jurisAddModal").modal("hide");
+        function closeSupplierAdd() {
+            $("#supplierAddModal").modal("hide");
         }
     </script>
 </head>
@@ -143,7 +81,7 @@
         <strong>Hi, 王老实 「仓库管理员」 | 修改密码</strong>
     </div>
     <div class="col-xs-3" style="padding: 20px;width: 22%;">
-        <img src="../resources/image/logo_u2.png" style="width: 350px;">
+        <img src="../../resources/image/logo_u2.png" style="width: 350px;">
     </div>
 </div>
 <div class="page-content">
@@ -155,17 +93,14 @@
                 仓库管理
             </a>
             <div id="warehouseMenu" class="collapse in">
-                <a class="list-group-item indent" href="#">
+                <a class="list-group-item indent" href="../warehouseManger/inventoryManager.html">
                     库存管理
                 </a>
-                <a class="list-group-item indent" href="#">
+                <a class="list-group-item indent" href="../warehouseManger/materielManager.html">
                     物料维护
                 </a>
                 <a class="list-group-item indent" href="#">
-                    申领单位维护
-                </a>
-                <a class="list-group-item indent" href="#">
-                    申领限额维护
+                    申领设置
                 </a>
             </div>
             <a class="list-group-item" href="#" data-toggle="collapse" data-target="#orderMenu"
@@ -200,10 +135,10 @@
                 <a class="list-group-item indent" href="roleManager.html">
                     角色管理
                 </a>
-                <a class="list-group-item indent active" href="#">
+                <a class="list-group-item indent" href="jurisdictionManager.html">
                     权限管理
                 </a>
-                <a class="list-group-item indent" href="supplierManager.html">
+                <a class="list-group-item indent active" href="#">
                     供应商维护
                 </a>
                 <a class="list-group-item indent" href="materielSync.html">
@@ -224,20 +159,20 @@
         <ol class="breadcrumb">
             <li><a href="#">首页</a></li>
             <li>基础信息维护</li>
-            <li class="active">权限管理</li>
+            <li class="active">供应商维护</li>
         </ol>
         <div id="content">
             <form class="form-horizontal" role="form">
                 <div class="form-group col-xs-4">
-                    <label class="col-xs-5 control-label">角色名称</label>
+                    <label class="col-xs-5 control-label">供应商编号</label>
                     <div class="col-xs-7">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="请输入">
+                        <input type="text" class="form-control" id="code" name="code" placeholder="请输入">
                     </div>
                 </div>
                 <div class="form-group col-xs-4">
-                    <label class="col-xs-5 control-label">用户名称</label>
+                    <label class="col-xs-5 control-label">供应商名称</label>
                     <div class="col-xs-7">
-                        <input type="text" class="form-control" id="code" name="code" placeholder="请输入">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="请输入">
                     </div>
                 </div>
                 <div class="form-group col-xs-4">
@@ -246,22 +181,16 @@
             </form>
             <div class="table-toolbar">
                 <div class="btn-toolbar">
-                    <a href="#" class="navbar-link" onclick="openJurisAdd()">
+                    <button type="button" class="btn btn-default" onclick="openSupplierAdd()">
                         <span class="glyphicon glyphicon-plus"></span> 新增
-                    </a>
-                    <a href="#" class="navbar-link">
+                    </button>
+                    <button type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-trash"></span> 删除
-                    </a>
-                    <a href="#" class="navbar-link">
-                        <span class="glyphicon glyphicon-cloud-upload"></span>导入
-                    </a>
-                    <a href="#" class="navbar-link">
-                        <span class="glyphicon glyphicon-save"></span>导出
-                    </a>
+                    </button>
                 </div>
             </div>
             <div id="contentTable" style="overflow: hidden;">
-                <table id="jurisMainTable"></table>
+                <table id="supplierMainTable"></table>
             </div>
         </div>
     </div>
@@ -269,7 +198,7 @@
 <div class="row" style="float:none;margin:auto;max-width: 1100px;height: 86px;background:#3a6ea5;">
 </div>
 <div id="jurisAddDiv">
-    <div class="modal fade" id="jurisAddModal" tabindex="-1" role="dialog" aria-labelledby="jurisAddModalLabel"
+    <div class="modal fade" id="supplierAddModal" tabindex="-1" role="dialog" aria-labelledby="supplierAddModalLabel"
          data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -277,21 +206,59 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="jurisAddModalLabel">授权</h4>
+                    <h4 class="modal-title" id="supplierAddModalLabel">供应商详细信息编辑页面</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group col-xs-6">
-                        <table id="jurisAddUserTable"></table>
+                        <label class="col-xs-4 control-label modal-label">供应商编号<span style="color: red">*</span></label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
                     </div>
                     <div class="form-group col-xs-6">
-                        <table id="jurisAddRoleTable"></table>
+                        <label class="col-xs-4 control-label modal-label">供应商名称<span style="color: red">*</span></label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-4 control-label modal-label">负责人<span style="color: red">*</span></label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-4 control-label modal-label">电话<span style="color: red">*</span></label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-2 control-label modal-label" style="width: 16%;">
+                            地址<span style="color: red">*</span>
+                        </label>
+                        <div class="col-xs-10" style="width: 80%;">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-4 control-label modal-label">账号<span style="color: red">*</span></label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label class="col-xs-4 control-label modal-label">密码<span style="color: red">*</span></label>
+                        <div class="col-xs-7">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="jurisAddsubmit" onclick="">
+                    <button type="button" class="btn btn-primary" id="supplierAddSubmit" onclick="">
                         <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
                     </button>
-                    <button type="button" class="btn btn-default" id="jurisAddClose" onclick="jurisAddClose()">
+                    <button type="button" class="btn btn-default" id="supplierAddClose" onclick="closeSupplierAdd()">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
                     </button>
                 </div>

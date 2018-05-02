@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>申领平台-管理端</title>
 
-    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../resources/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/base.css">
 
-    <script type="text/javascript" src="../resources/js/jquery.1.11.3.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
-    <script type="text/javascript" src="../resources/js/common.js"></script>
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/common.js"></script>
 
     <style type="text/css">
     </style>
@@ -29,7 +29,7 @@
 
         function tableFloorInit() {
             $('#addressFloorTable').bootstrapTable({
-                url: "../testData/floorData.json",         //请求后台的URL（*）
+                url: "../../testData/floorData.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -59,7 +59,7 @@
 
         function tableLayerInit() {
             $('#addressLayerTable').bootstrapTable({
-                url: "../testData/layerData.json",         //请求后台的URL（*）
+                url: "../../testData/layerData.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -90,7 +90,7 @@
 
         function tableRoomInit() {
             $('#addressRoomTable').bootstrapTable({
-                url: "../testData/roomData.json",         //请求后台的URL（*）
+                url: "../../testData/roomData.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -132,7 +132,7 @@
         <strong>Hi, 王老实 「仓库管理员」 | 修改密码</strong>
     </div>
     <div class="col-xs-3" style="padding: 20px;width: 22%;">
-        <img src="../resources/image/logo_u2.png" style="width: 350px;">
+        <img src="../../resources/image/logo_u2.png" style="width: 350px;">
     </div>
 </div>
 <div class="page-content">
@@ -144,17 +144,14 @@
                 仓库管理
             </a>
             <div id="warehouseMenu" class="collapse in">
-                <a class="list-group-item indent" href="#">
+                <a class="list-group-item indent" href="../warehouseManger/inventoryManager.html">
                     库存管理
                 </a>
-                <a class="list-group-item indent" href="#">
+                <a class="list-group-item indent" href="../warehouseManger/materielManager.html">
                     物料维护
                 </a>
                 <a class="list-group-item indent" href="#">
-                    申领单位维护
-                </a>
-                <a class="list-group-item indent" href="#">
-                    申领限额维护
+                    申领设置
                 </a>
             </div>
             <a class="list-group-item" href="#" data-toggle="collapse" data-target="#orderMenu"

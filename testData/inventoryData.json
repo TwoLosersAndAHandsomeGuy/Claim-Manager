@@ -12,7 +12,10 @@
       "brand":"樱花",
       "num" : "5000",
       "state" : "未上架",
-      "supplier" : "供应商1"
+      "supplier" : "供应商1",
+      "dept" : "口腔科",
+      "cycle" : "",
+      "quota" : ""
     },
     {
       "id": 2,
@@ -25,7 +28,10 @@
       "brand":"真彩",
       "num" : "0",
       "state" : "缺货",
-      "supplier" : "供应商2"
+      "supplier" : "供应商2",
+      "dept" : "急诊科",
+      "cycle" : "每年",
+      "quota" : "100"
     },
     {
       "id": 3,
@@ -38,7 +44,10 @@
       "brand":"晨光",
       "num" : "2000",
       "state" : "正常",
-      "supplier" : "供应商3"
+      "supplier" : "供应商3",
+      "dept" : "后勤科",
+      "cycle" : "每季",
+      "quota" : "50"
     },
     {
       "id": 4,
@@ -51,7 +60,10 @@
       "brand":"得力",
       "num" : "200",
       "state" : "正常",
-      "supplier" : "供应商4"
+      "supplier" : "供应商4",
+      "dept" : "麻醉科",
+      "cycle" : "每周",
+      "quota" : "100"
     }
   ]
 }

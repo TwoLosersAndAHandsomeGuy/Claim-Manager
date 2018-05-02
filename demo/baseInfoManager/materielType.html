@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>申领平台-管理端</title>
 
-    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../resources/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/base.css">
 
-    <script type="text/javascript" src="../resources/js/jquery.1.11.3.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
-    <script type="text/javascript" src="../resources/js/common.js"></script>
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/common.js"></script>
 
     <style type="text/css">
+
     </style>
     <script type="text/javascript">
         $(function () {
@@ -24,7 +26,7 @@
 
         function tableSupplierMainInit() {
             $('#supplierMainTable').bootstrapTable({
-                url: "../testData/supplierData.json",         //请求后台的URL（*）
+                url: "../../testData/materielTypeData.json",         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 pagination: true,                   //是否显示分页（*）
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -38,39 +40,29 @@
                 columns: [{
                     checkbox: true
                 }, {
-                    field: 'AutoID',
-                    title: '投诉ID',
+                    field: 'id',
                     visible: false
                 }, {
-                    field: 'supplierCode',
-                    title: '供应商编号'
+                    field: 'materielTypeCode',
+                    title: '编码'
                 }, {
-                    field: 'supplierName',
-                    title: '供应商名称'
+                    field: 'materielTypeName',
+                    title: '名称'
                 }, {
-                    field: 'address',
-                    title: '地点'
+                    field: 'claimRemark',
+                    title: '申领备注'
                 }, {
-                    field: 'address',
-                    title: '负责人'
-                }, {
-                    field: 'phone',
-                    title: '电话'
-                }, {
-                    field: 'account',
-                    title: '账号'
-                }, {
-                    field: 'password',
-                    title: '密码'
+                    field: 'isAvailable',
+                    title: '是否可用'
                 }
                 ]
             });
         }
         function openSupplierAdd() {
-            $("#supplierAddModal").modal("show");
+            $("#materielTypeAddModal").modal("show");
         }
-        function closeSupplierAdd(){
-            $("#supplierAddModal").modal("hide");
+        function closeMaterielType() {
+            $("#materielTypeAddModal").modal("hide");
         }
     </script>
 </head>
@@ -80,7 +72,7 @@
         <strong>Hi, 王老实 「仓库管理员」 | 修改密码</strong>
     </div>
     <div class="col-xs-3" style="padding: 20px;width: 22%;">
-        <img src="../resources/image/logo_u2.png" style="width: 350px;">
+        <img src="../../resources/image/logo_u2.png" style="width: 350px;">
     </div>
 </div>
 <div class="page-content">
@@ -92,17 +84,14 @@
                 仓库管理
             </a>
             <div id="warehouseMenu" class="collapse in">
-                <a class="list-group-item indent" href="#">
+                <a class="list-group-item indent" href="../warehouseManger/inventoryManager.html">
                     库存管理
                 </a>
-                <a class="list-group-item indent" href="#">
+                <a class="list-group-item indent" href="../warehouseManger/materielManager.html">
                     物料维护
                 </a>
                 <a class="list-group-item indent" href="#">
-                    申领单位维护
-                </a>
-                <a class="list-group-item indent" href="#">
-                    申领限额维护
+                    申领设置
                 </a>
             </div>
             <a class="list-group-item" href="#" data-toggle="collapse" data-target="#orderMenu"
@@ -140,7 +129,7 @@
                 <a class="list-group-item indent" href="jurisdictionManager.html">
                     权限管理
                 </a>
-                <a class="list-group-item indent active" href="#">
+                <a class="list-group-item indent " href="supplierManager.html">
                     供应商维护
                 </a>
                 <a class="list-group-item indent" href="materielSync.html">
@@ -149,7 +138,7 @@
                 <a class="list-group-item indent" href="addressManager.html">
                     收货地址维护
                 </a>
-                <a class="list-group-item indent" href="materielType.html">
+                <a class="list-group-item indent active" href="#">
                     物料分类
                 </a>
             </div>
@@ -161,20 +150,14 @@
         <ol class="breadcrumb">
             <li><a href="#">首页</a></li>
             <li>基础信息维护</li>
-            <li class="active">供应商维护</li>
+            <li class="active">物料分类</li>
         </ol>
         <div id="content">
             <form class="form-horizontal" role="form">
-                <div class="form-group col-xs-4">
-                    <label class="col-xs-5 control-label">供应商编号</label>
+                <div class="form-group col-xs-6">
+                    <label class="col-xs-4 control-label">名称/编码</label>
                     <div class="col-xs-7">
                         <input type="text" class="form-control" id="code" name="code" placeholder="请输入">
-                    </div>
-                </div>
-                <div class="form-group col-xs-4">
-                    <label class="col-xs-5 control-label">供应商名称</label>
-                    <div class="col-xs-7">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="请输入">
                     </div>
                 </div>
                 <div class="form-group col-xs-4">
@@ -183,12 +166,18 @@
             </form>
             <div class="table-toolbar">
                 <div class="btn-toolbar">
-                    <a href="#" class="navbar-link" onclick="openSupplierAdd()">
+                    <button type="button" class="btn btn-default" onclick="openSupplierAdd()">
                         <span class="glyphicon glyphicon-plus"></span> 新增
-                    </a>
-                    <a href="#" class="navbar-link">
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-ok-circle"></span> 启用
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-ban-circle"></span> 禁用
+                    </button>
+                    <button type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-trash"></span> 删除
-                    </a>
+                    </button>
                 </div>
             </div>
             <div id="contentTable" style="overflow: hidden;">
@@ -199,8 +188,9 @@
 </div>
 <div class="row" style="float:none;margin:auto;max-width: 1100px;height: 86px;background:#3a6ea5;">
 </div>
-<div id="jurisAddDiv">
-    <div class="modal fade" id="supplierAddModal" tabindex="-1" role="dialog" aria-labelledby="supplierAddModalLabel"
+<div id="materielTypeAddDiv" class="little-modal">
+    <div class="modal fade" id="materielTypeAddModal" tabindex="-1" role="dialog"
+         aria-labelledby="materielTypeAddModalLabel"
          data-backdrop="static">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -208,59 +198,58 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="supplierAddModalLabel">供应商详细信息编辑页面</h4>
+                    <h4 class="modal-title" id="materielTypeAddModalLabel">物料分类</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group col-xs-6">
-                        <label class="col-xs-4 control-label modal-label">供应商编号<span style="color: red">*</span></label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-3 control-label modal-label">上级</label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" placeholder="无" readonly="true">
                         </div>
                     </div>
-                    <div class="form-group col-xs-6">
-                        <label class="col-xs-4 control-label modal-label">供应商名称<span style="color: red">*</span></label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-6">
-                        <label class="col-xs-4 control-label modal-label">负责人<span style="color: red">*</span></label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-6">
-                        <label class="col-xs-4 control-label modal-label">电话<span style="color: red">*</span></label>
-                        <div class="col-xs-7">
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-3 control-label modal-label">编码<span style="color: red">*</span></label>
+                        <div class="col-xs-9">
                             <input type="text" class="form-control" placeholder="请输入">
                         </div>
                     </div>
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label modal-label" style="width: 16%;">
-                            地址<span style="color: red">*</span>
+                        <label class="col-xs-3 control-label modal-label">名称<span style="color: red">*</span></label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" placeholder="请输入">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-3 control-label modal-label">是否可用</label>
+                        <div class="col-xs-8">
+                            <label class="radio-inline">
+                                <input type="radio" name="isAvailable" value="true" checked="checked">是
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="isAvailable" value="false">否
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-3 control-label modal-label">
+                            申领备注
                         </label>
-                        <div class="col-xs-10" style="width: 80%;">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-6">
-                        <label class="col-xs-4 control-label modal-label">账号<span style="color: red">*</span></label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-6">
-                        <label class="col-xs-4 control-label modal-label">密码<span style="color: red">*</span></label>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" placeholder="请输入">
+                        <div class="col-xs-8">
+                            <label class="radio-inline">
+                                <input type="radio" name="claimRemark" value="true" checked="checked">是
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="claimRemark" value="false">否
+                            </label>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="supplierAddSubmit" onclick="">
+                    <button type="button" class="btn btn-primary" id="materielTypeAddSubmit" onclick="">
                         <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
                     </button>
-                    <button type="button" class="btn btn-default" id="supplierAddClose" onclick="closeSupplierAdd()">
+                    <button type="button" class="btn btn-default" id="materielTypeAddClose"
+                            onclick="closeMaterielType()">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
                     </button>
                 </div>
