@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>申领平台-管理端</title>
+
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/base.css">
+
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/common.js"></script>
+
+    <style type="text/css">
+        .icon-minus{
+            display: none;
+        }
+
+        .fixed-table-header table{
+            display: none;
+        }
+
+        #orderMainToolBar{
+            margin-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .fixed-table-container{
+            border-top:0;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            tableInventoryMainInit();
+        });
+
+
+        function tableInventoryMainInit() {
+            $('#pendingOrderMainTable').bootstrapTable({
+                url: "../../testData/orderData.json",         //请求后台的URL（*）
+                method: 'get',                      //请求方式（*）
+                pagination: true,                   //是否显示分页（*）
+                sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                striped: true,                      //是否显示行间隔色
+                clickToSelect: true,                //是否启用点击选中行
+                height: 600,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                singleSelect: false,
+                detailView: true,
+                detailFormatter: detailFormat,
+                onLoadSuccess : function (data){
+                    $('#pendingOrderMainTable').bootstrapTable('expandAllRows');
+                    $("#pendingOrderMainTable .detail-view td[colspan]").css("padding","0");
+                    $("#pendingOrderMainTable .detail-view td[colspan]").css("padding","0");
+                },
+                queryParams: function (param) {
+                    return param;
+                },
+                columns: [
+                    {
+                        field: 'orderCode',
+                        formatter: orderFormatter
+                    }
+                ]
+            });
+        }
+        function orderFormatter(value, row, index) {
+            return "<small>" + row.orderTime + "&nbsp;&nbsp;&nbsp;&nbsp;订单号:" + value + "</small>";
+        }
+
+        function detailFormat(index, row) {
+            var html = "";
+
+            html += "<tr style='padding: 0'>";
+            html += "<td style='border-bottom: 1px solid #ddd;width: 685px;'><small>" + row.orderDetail[0].goodsName + "&nbsp;&nbsp;X" + row.orderDetail[0].num + "</small></td>";
+            html += "<td rowspan='"+ row.orderDetail.length +"' style='width: 100px;text-align: center;'><small>" + row.recipien + "</small></td>";
+            html += "<td rowspan='"+ row.orderDetail.length +"' style='width: 100px;text-align: center;'><small><a href='#'>接单</a>&nbsp;&nbsp;<a href='#'>拒绝</a></small></td>";
+            html += "</tr>";
+            for (var i = 1; i < row.orderDetail.length; i++) {
+                html += "<tr>";
+                html += "<td><small>" + row.orderDetail[i].goodsName + "&nbsp;&nbsp;X" + row.orderDetail[i].num + "</small></td>";
+                html += "</tr>";
+            }
+            return html;
+        }
+    </script>
+</head>
+<body>
+<div class="row" style="float:none;margin:auto;max-width: 1100px;background:#3a6ea5;">
+    <div class="row" style="float:right;margin:5px 20px 10px auto;color:white;">
+        <strong>Hi, 王老实 「仓库管理员」 | 修改密码</strong>
+    </div>
+    <div class="col-xs-3" style="padding: 20px;width: 22%;">
+        <img src="../../resources/image/logo_u2.png" style="width: 350px;">
+    </div>
+</div>
+<div class="page-content">
+    <div id="treeMenu" class="col-xs-2 treeMenu">
+        <div class="list-group">
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#warehouseMenu"
+               onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>
+                仓库管理
+            </a>
+            <div id="warehouseMenu" class="collapse in">
+                <a class="list-group-item indent" href="../warehouseManger/inventoryManager.html">
+                    库存管理
+                </a>
+                <a class="list-group-item indent" href="../warehouseManger/materielManager.html">
+                    物料维护
+                </a>
+                <a class="list-group-item indent" href="../warehouseManger/claimSetting.html">
+                    申领设置
+                </a>
+            </div>
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#orderMenu"
+               onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>订单管理
+            </a>
+            <div id="orderMenu" class="collapse in">
+                <a class="list-group-item indent active" href="#">
+                    待处理订单
+                </a>
+                <a class="list-group-item indent" href="#">
+                    订单追踪
+                </a>
+            </div>
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#serviceMenu"
+               onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>服务管理
+            </a>
+            <div id="serviceMenu" class="collapse in">
+                <a class="list-group-item indent" href="#">
+                    待处理服务
+                </a>
+                <a class="list-group-item indent" href="#">
+                    服务单
+                </a>
+            </div>
+            <a class="list-group-item" href="#" data-toggle="collapse" data-target="#baseInfoMenu"
+               onclick="changeImg(this)">
+                <span class="glyphicon glyphicon-minus"></span>基础信息维护
+            </a>
+            <div id="baseInfoMenu" class="collapse in">
+                <a class="list-group-item indent" href="../baseInfoManager/roleManager.html">
+                    角色管理
+                </a>
+                <a class="list-group-item indent" href="../baseInfoManager/jurisdictionManager.html">
+                    权限管理
+                </a>
+                <a class="list-group-item indent " href="../baseInfoManager/supplierManager.html">
+                    供应商维护
+                </a>
+                <a class="list-group-item indent" href="../baseInfoManager/materielSync.html">
+                    物料同步
+                </a>
+                <a class="list-group-item indent" href="../baseInfoManager/addressManager.html">
+                    收货地址维护
+                </a>
+                <a class="list-group-item indent" href="../baseInfoManager/materielType.html">
+                    物料分类
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+    <div id="nav">
+        <ol class="breadcrumb">
+            <li><a href="#">首页</a></li>
+            <li>仓库管理</li>
+            <li class="active">库存管理</li>
+        </ol>
+        <div id="content">
+            <form class="form-horizontal" role="form">
+                <div class="form-group col-xs-4">
+                    <label class="col-xs-4 control-label">订单编码</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label class="col-xs-4 control-label">物料名称</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-4">
+                    <label class="col-xs-4 control-label">收货人</label>
+                    <div class="col-xs-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-xs-1">
+                    <button type="submit" id="btnSearch" class="btn btn-primary">查询</button>
+                </div>
+            </form>
+            <div class="form-horizontal" id="orderMainToolBar">
+                <div style="width:680px;">
+                    <div class="col-xs-6"><span>近三个月订单</span></div>
+                    <div class="col-xs-6"><span>订单详情</span></div>
+                </div>
+                <div class="col-xs-1" style="width:100px;text-align: center;"><span>收货人</span></div>
+                <div class="col-xs-1" style="width:100px;text-align: center;"><span>操作</span></div>
+            </div>
+            <div id="contentTable" style="overflow: hidden;margin-top: 10px;">
+                <table id="pendingOrderMainTable"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="float:none;margin:auto;max-width: 1100px;height: 86px;background:#3a6ea5;">
+</div>
+<div id="inventoryAddDiv" class="little-modal">
+    <div class="modal fade" id="inventoryModal" tabindex="-1" role="dialog" aria-labelledby="inventoryModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="inventoryModalLabel">库存</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
