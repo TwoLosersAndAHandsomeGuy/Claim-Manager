@@ -71,13 +71,10 @@
             });
         }
         function invFormatter(value, row, index){
-            return "<a href='#' onclick='openInventoryWin(" + index + ")'> " + value + "</a>";
+            return "<a href=\"#\" onclick=\"openInventoryWin('" + row.id + "')\"> " + value + "</a>";
         }
 
-        function openInventoryWin(index){
-            var data = $('#inventoryMainTable').bootstrapTable('getData');
-            var id = data[index].id;
-
+        function openInventoryWin(id){
             $("#inventoryModal").modal("show");
         }
         function closeInventoryWin(){

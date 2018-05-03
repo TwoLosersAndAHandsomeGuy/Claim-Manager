@@ -54,7 +54,6 @@
                 onLoadSuccess : function (data){
                     $('#pendingOrderMainTable').bootstrapTable('expandAllRows');
                     $("#pendingOrderMainTable .detail-view td[colspan]").css("padding","0");
-                    $("#pendingOrderMainTable .detail-view td[colspan]").css("padding","0");
                 },
                 queryParams: function (param) {
                     return param;
@@ -75,7 +74,9 @@
             var html = "";
 
             html += "<tr style='padding: 0'>";
-            html += "<td style='border-bottom: 1px solid #ddd;width: 685px;'><small>" + row.orderDetail[0].goodsName + "&nbsp;&nbsp;X" + row.orderDetail[0].num + "</small></td>";
+            html += "<td style='border-bottom: 1px solid #ddd;width: 685px;'>";
+            html +="<small>" + row.orderDetail[0].goodsName + "&nbsp;&nbsp;X" + row.orderDetail[0].num + "</small>";
+            html +="</td>";
             html += "<td rowspan='"+ row.orderDetail.length +"' style='width: 100px;text-align: center;'><small>" + row.recipien + "</small></td>";
             html += "<td rowspan='"+ row.orderDetail.length +"' style='width: 100px;text-align: center;'><small><a href='#'>接单</a>&nbsp;&nbsp;<a href='#'>拒绝</a></small></td>";
             html += "</tr>";
