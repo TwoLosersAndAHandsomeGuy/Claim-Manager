@@ -1,8 +1,8 @@
 {
-  "total": 12,
-  "rows": [
+  "data": [
     {
       "id": 1,
+      "parentId": null,
       "materielTypeCode": "SPPL-HC",
       "materielTypeName": "耗材",
       "claimRemark" : "否",
@@ -10,6 +10,7 @@
     },
     {
       "id": 2,
+      "parentId":1,
       "materielTypeCode": "SPPL-DZ",
       "materielTypeName": "低值耗材",
       "claimRemark" : "否",
@@ -17,6 +18,7 @@
     },
     {
       "id": 3,
+      "parentId":1,
       "materielTypeCode": "SSPL-SB",
       "materielTypeName": "设备",
       "claimRemark" : "否",
@@ -24,6 +26,7 @@
     },
     {
       "id": 4,
+      "parentId":null,
       "materielTypeCode": "SSPL-WJ",
       "materielTypeName": "五金建材",
       "claimRemark" : "否",
@@ -31,6 +34,7 @@
     },
     {
       "id": 5,
+      "parentId":4,
       "materielTypeCode": "SSPL-YP",
       "materielTypeName": "药品",
       "claimRemark" : "否",
