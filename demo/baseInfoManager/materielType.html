@@ -23,7 +23,7 @@
         $(function () {
             tableSupplierMainInit();
             //展开所有
-            $('#supplierMainTable').bootstrapTable('expandAllTree');
+//            $('#supplierMainTable').bootstrapTable('expandAllTree');
         });
 
 
@@ -35,6 +35,7 @@
                 treeView: true,//是否开启树视图
                 treeId: "id",//id字段
                 treeField: "materielTypeName",//展示树的字段
+                treeCollapseAll:false,      //全部展开
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 striped: true,                      //是否显示行间隔色
                 clickToSelect: true,                //是否启用点击选中行
